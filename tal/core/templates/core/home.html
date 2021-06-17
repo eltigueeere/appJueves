@@ -1,0 +1,30 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Inicio{% endblock %}
+{% block content %}
+<div class="container">
+  
+  {% if mensajes >= 1 %}
+    <div id="element"  style="visibility:hidden;">
+      <p style="color:white; background-color: green; text-align: center;">
+        Tienes un mensaje nuevo.
+      </p>
+    </div>
+  {% endif %}
+  <div style="padding-top:50px; text-align:center;">
+    <h1>{{title}}</h1>
+    <p class="lead">Telefono: 5568659667 <br> Email: eduardo33guerrero@gmail.com</p>
+  </div>
+</div>
+
+
+<script>
+  document.getElementById("element").style.visibility = 'visible';
+  setTimeout(tiempo, 3000);
+  function tiempo(){
+    document.getElementById("element").style.visibility = 'hidden';
+  }
+  
+</script>
+{% endblock %}
+
