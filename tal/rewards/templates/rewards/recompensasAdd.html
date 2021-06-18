@@ -1,0 +1,92 @@
+
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Recompensas{% endblock %}
+{% block content %}
+
+<style type="text/css">
+  input {
+
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+
+  }
+</style>
+<div class="container mb-4">
+  {% if 'ok' in request.GET %}
+  <p style="color:green;">Se guardo correctamente.</p>
+  {%endif%}
+  <!--<form action="" method="POST">
+      {% csrf_token %}
+      <table>
+        {{form.as_table}}
+      </table>
+      <br>
+      <input class="btn btn-block badge-primary" type="submit" value="Enviar"/>
+    </form>-->
+
+  <div class="form-group">
+    <form action="" method="POST">
+      {% csrf_token %}
+
+      <div class="form-group">
+        <label for="">Recompensa</label>
+        <div class="input-group">
+          <input name="recompensa" type="number" placeholder="Número de estrellas">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="">Usuario</label>
+        <div class="input-group">
+          <input name="nombreUsuario" type="text" placeholder="{{userName}}" value="{{userName}}" readonly>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="">Consumo</label>
+        <div class="input-group">
+          <select class="form-control" name="producto">
+            <option value="Producto 1">Producto 1</option>
+            <option value="Producto 2" selected>Producto 2</option>
+            <option value="Producto 3">Producto 3</option>
+            <option value="Producto 4">Producto 4</option>
+            <option value="Producto 5">Producto 5</option>
+          </select>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label for="">Empresa</label>
+        <div class="input-group">
+          <input name="nombreEmpresaUsuario" type="text" placeholder="{{request.user}}" value="{{request.user}}"
+            readonly>
+        </div>
+      </div>
+
+      <br>
+      <input class="btn btn-block badge-primary" type="submit" value="Enviar" />
+      <br>
+    </form>
+
+    <a class="btn btn-block badge-danger" href="/rewards/delRecompensas/{{userName}}">Eliminar recompesas</a>
+  </div>
+
+
+
+  <br><br>
+</div>
+<br>
+
+{% endblock %}

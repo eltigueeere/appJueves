@@ -1,0 +1,56 @@
+<style type="text/css">
+  input {
+
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+
+  }
+  </style>
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Recompensas{% endblock %}
+{% block content %}
+<main role="main">
+  <div class="container mb-4">
+    {% if 'ok' in request.GET %}
+    <p style="color:green;">Se guardo correctamente.</p>
+    {%endif%}
+    <!--<form action="" method="POST">
+      {% csrf_token %}
+      <table>
+        {{form.as_table}}
+      </table>
+      <br>
+      <input class="btn btn-block badge-primary" type="submit" value="Enviar"/>
+    </form>-->
+
+    <div class="form-group">
+      <form action="" method="POST">
+        {% csrf_token %}
+        
+       <h4>¿Eliminar recompensas? de:</h4>
+       <input name="nombreUsuario" type="text" placeholder="{{userName}}" value="{{userName}}" readonly>
+        
+       <br><br>
+
+       <input  class="btn btn-block badge-danger" type="submit" value="Enviar"/>
+      </form>
+
+
+    </div>
+
+    
+
+  </div>
+</main>
+{% endblock %}
