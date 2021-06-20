@@ -5,7 +5,7 @@ name = "pypi"
 
 [packages]
 django = "*"
-django-ckeditor = "*"
+django-ckeditor = "==6.0.0"
 pillow = "*"
 pylint = "*"
 pylint-django = "*"
@@ -13,6 +13,8 @@ pylint-celery = "*"
 pip = "*"
 mysql-connector-python = "*"
 pymysql = "*"
+mysqlclient = "*"
+django-utils-six = "*"
 
 [dev-packages]
 

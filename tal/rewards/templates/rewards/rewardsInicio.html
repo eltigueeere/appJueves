@@ -2,14 +2,40 @@
 {% load static %}
 {% block title %}Página{% endblock %}
 {% block content %}
-<h3>Rewards</h3>
+
+<style>
+    .padre {
+        display: table;
+        height: 300px;
+    }
+
+    .hijo {
+        display: table-cell;
+        vertical-align: middle;
+        font-size: 39px;
+        text-align: center;
+    }
+</style>
+
 <div class="container">
-    <div class="row">
-        lalos
+
+    <div class="row ">
+        <div class="col-6 padre ">
+            <h4 class="hijo">
+                {{saludo }}, {{usuario}} <i class="fa fa-hand-paper-o" style="font-size:30px;color:#FCD0B4"></i>
+            </h4>
+        </div>
+
+        <div class="col-6 padre ">
+            <h4 class="hijo">
+                {{recompensas_recompensa}} <i class="fa fa-star-o" style="font-size:30px;color:yellow"></i>
+            </h4>
+        </div>
+
     </div>
-    <br><br><br>
+
 </div>
 
+
+
 {% endblock %}
-
-

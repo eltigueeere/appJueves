@@ -1,12 +1,11 @@
 from django.shortcuts import render
+from django.db.models import Sum
 from django.views.generic.base import TemplateView
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
 from django.shortcuts import render, redirect
 from django.urls import reverse
-#import MySQLdb
-import mysql.connector
 from .forms import RecompensaForm
 from .models import Recompensa
 
@@ -14,25 +13,18 @@ from .models import Recompensa
 @method_decorator(login_required, name='dispatch')
 class RewardsInicio(TemplateView):
     template_name = "rewards/rewardsInicio.html"
-
+    template_name2 = "rewards/rewardsInicio2.html"
     def get(self, request, *args, **kwargs):
-        #db = MySQLdb.connect(user='eguerrero', db='eguerrero$mexa', passwd='Ereslomasbonit0', host='eguerrero.mysql.#pythonanywhere-services.com')
-        #cursor = db.cursor()
-        #sql = "SELECT SUM(recompensas_recompensa.recompensa), nombreUsuario, recompensas_recompensa.nombreEmpresaUsuario FROM recompensas_recompensa INNER JOIN auth_user ON recompensas_recompensa.nombreEmpresaUsuario  = auth_user.username WHERE recompensas_recompensa.nombreUsuario = '" + str(request.user) + "' and recompensas_recompensa.statusRecompensa = 1 GROUP BY recompensas_recompensa.nombreEmpresaUsuario"
-        #print (sql)
-        #cursor.execute( sql) #, (str(request.user)))
-        #recompensas_recompensa = []
-        #for row in cursor.fetchall():
-        #    recompensas_recompensa.append(row)
-        #db.close()
-        miConexion = mysql.connector.connect( host='localhost', user= 'root', passwd='toor', db='mexa' )
-        cur = miConexion.cursor()
-        cur.execute( "SELECT SUM(recompensas_recompensa.recompensa), nombreUsuario, recompensas_recompensa.nombreEmpresaUsuario FROM recompensas_recompensa INNER JOIN auth_user ON recompensas_recompensa.nombreEmpresaUsuario  = auth_user.username WHERE recompensas_recompensa.nombreUsuario = '" + str(request.user) + "' and recompensas_recompensa.statusRecompensa = 1 GROUP BY recompensas_recompensa.nombreEmpresaUsuario" )
-        recompensas_recompensa = []
-        for row in cur.fetchall() :
-            recompensas_recompensa.append(row)
-        miConexion.close()
-        return render(request, self.template_name, {'recompensas_recompensa': recompensas_recompensa})
+        recompensas_recompensa=0
+        recompensas_recompensa_empresa=0
+        if (request.user.is_authenticated and (request.user.groups.filter(name='empresa').exists() or request.user.is_staff )):
+            recompensas_recompensa_empresa = Recompensa.objects.values('nombreUsuario').filter(statusRecompensa=1).order_by('nombreUsuario').annotate(total_recompensa=Sum('recompensa'))
+            return render(request, self.template_name2, {'saludo': 'Hola', 'usuario':self.request.user ,  'recompensas_recompensa_empresa': recompensas_recompensa_empresa,})
+        else:
+            recompensaUser = Recompensa.objects.all().filter(nombreUsuario=self.request.user, statusRecompensa=1)
+            for rc in recompensaUser:
+                recompensas_recompensa = recompensas_recompensa + rc.recompensa
+            return render(request, self.template_name, {'saludo': 'Hola', 'usuario':self.request.user ,  'recompensas_recompensa': recompensas_recompensa,})
 
 
 def compraUsuario(request, userName):
@@ -65,12 +57,6 @@ def delRecompensa(request, userName):
     if (request.user.is_authenticated and (request.user.groups.filter(name='empresa').exists() or request.user.is_staff )):
 
         if request.method == "POST":
-            #nombreUser = request.POST['nombreUsuario']
-            #db = MySQLdb.connect(user='root', db='mexa', passwd='', host='localhost')
-            #cursor = db.cursor()
-            #sql = "UPDATE recompensas_recompensa SET statusRecompensa = 0 WHERE recompensas_recompensa.nombreUsuario  = '" + nombreUser + "'"
-            #cursor.execute( sql)
-            #db.close()
             Recompensa.objects.filter(nombreUsuario=request.POST['nombreUsuario']).update(statusRecompensa=0)
             return redirect('/')
 
