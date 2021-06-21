@@ -84,10 +84,10 @@ WSGI_APPLICATION = 'tal.wsgi.application'
 DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'mexa',
-            'USER': 'root',
-            'PASSWORD': 'toor',
-            'HOST': 'localhost',
+            'NAME': 'eguerrero$mexa',
+            'USER': 'eguerrero',
+            'PASSWORD': 'Ereslomasbonit0',
+            'HOST': 'eguerrero.mysql.pythonanywhere-services.com',
             'PORT': '3306',
         }
     }
