@@ -7,7 +7,7 @@ class HomePageView(TemplateView):
     template_name = "core/home.html"
 
     def get(self, request, *args, **kwargs):
-        return render(request, self.template_name, {'title':"Para ser un socio de esta APP contactanos."})
+        return render(request, self.template_name,)
 
 class SamplePageView(TemplateView):
     template_name = "core/sample.html"
