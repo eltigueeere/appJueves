@@ -29,7 +29,7 @@ class ProfileForm(forms.ModelForm):
             'link': forms.TextInput(attrs={'class':'form-control mt-3', 'placeholder':'@Tu instagram'}),
             'nombre': forms.TextInput(attrs={'class':'form-control mt-3', 'placeholder':'Nombre','required': True}),
             'apellido': forms.TextInput(attrs={'class':'form-control mt-3', 'placeholder':'Apellido'}),
-            'birthday': forms.DateInput(attrs={'class':'form-control mt-3', 'placeholder':'yyyy-mm-dd','required': True }),
+            'birthday': forms.DateInput(attrs={'class':'form-control mt-3', 'placeholder':'yyyy/mm/dd','required': True }),
             'telefono': forms.NumberInput(attrs={'class':'form-control mt-3', 'placeholder':'Telefono', 'required': True}),
             'calle': forms.TextInput(attrs={'class':'form-control mt-3', 'placeholder':'Calle'}),
             'numero': forms.TextInput(attrs={'class':'form-control mt-3', 'placeholder':'Numero'}),
