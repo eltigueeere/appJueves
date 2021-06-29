@@ -1,12 +1,14 @@
 from django.core.mail import send_mail
+from datetime import datetime
 from django.http import HttpResponse
-#from django.apps import apps
-#modelRewards = apps.get_model('app', 'class')
 from django.contrib.auth.models import User
 from django.views.generic.edit import UpdateView, FormView
 from django.views.generic.base import TemplateView
 from .models import CorreosCumpleInvitacionPublicidad
 from .forms import CorreosForm, MailGeneralForm
+from django.apps import apps
+perfil = apps.get_model('registration', 'Profile')
+
 
 class CorreosServiciosUpdate(UpdateView):
     form_class = CorreosForm
@@ -35,22 +37,34 @@ class MandarCorreoGeneralView(FormView):
 
 
 def sendMail(request):
-    correos = User.objects.values('email')
-    correosList = []
-    print(correos)
-    for c in correos:
-        correosList.append(c['email'])
 
-    print(correosList)
-
-    #send_mail(subject="subject", message="message 11:30", from_email="conjguerrero@gmail.com", recipient_list=correosList,fail_silently=False)
+    esCumple()
 
     return HttpResponse("Hello, world. correos.")
 
 
 
 def esCumple():
-    print()
+    x = datetime.now()
+    dia = x.strftime("%d")
+    mes = x.strftime("%m")
+    cumpleaneros=[]
+    correosList=[]
+    aFelicitar = perfil.objects.all()
+    for af in aFelicitar:
+        if af.birthday != None:
+            cumpleSplit = af.birthday.split("/")
+            if dia == cumpleSplit[2] and mes == cumpleSplit[1]:
+                cumpleaneros.append(af.user_id)
+    
+    print(cumpleaneros) 
+            
+    for i in cumpleaneros:
+        correos = User.objects.values('id', 'username', 'email').filter(id=i)
+        correosList.append(correos[0]['email'])
+        print (correosList)
+        send_mail(subject="Feliz cumpleaños " + correos[0]['username'], message="Queremos que disfrutes tu cumpleaños con nosotros ven te espera una sorpresa.", from_email="conjguerrero@gmail.com", recipient_list=correosList,fail_silently=False)
+        correosList=[]
 
 def invitacion():
     print()

@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-w4)+efbtuc5#qpp-a+9c6^hfv+41ift-@04-c13bo4v6+#zg+r'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['www.mexinc.com.mx']
 
 
 # Application definition
@@ -85,13 +85,24 @@ WSGI_APPLICATION = 'tal.wsgi.application'
 DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'mexa',
-            'USER': 'root',
-            'PASSWORD': 'toor',
-            'HOST': 'localhost',
+            'NAME': 'eguerrero$mexa',
+            'USER': 'eguerrero',
+            'PASSWORD': 'Ereslomasbonit0',
+            'HOST': 'eguerrero.mysql.pythonanywhere-services.com',
             'PORT': '3306',
         }
     }
+
+#DATABASES = {
+#        'default': {
+#            'ENGINE': 'django.db.backends.mysql',
+#            'NAME': 'mexa',
+#            'USER': 'root',
+#            'PASSWORD': 'toor',
+#            'HOST': 'localhost',
+#            'PORT': '3306',
+#        }
+#    }
 
 
 # Password validation
@@ -145,6 +156,8 @@ LOGOUT_REDIRECT_URL = 'home'
 
 # Emails
 if DEBUG:
+    #EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+    #EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
     EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"    
     EMAIL_HOST = "smtp.gmail.com"
     EMAIL_HOST_USER = "mexa.industrias@gmail.com"
