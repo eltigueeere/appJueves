@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-w4)+efbtuc5#qpp-a+9c6^hfv+41ift-@04-c13bo4v6+#zg+r'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['www.mexinc.com.mx']
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'rewards',
     'ckeditor',
     'profiles',
+    'correoos',
 
 ]
 
@@ -84,10 +85,10 @@ WSGI_APPLICATION = 'tal.wsgi.application'
 DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'eguerrero$mexa',
-            'USER': 'eguerrero',
-            'PASSWORD': 'Ereslomasbonit0',
-            'HOST': 'eguerrero.mysql.pythonanywhere-services.com',
+            'NAME': 'mexa',
+            'USER': 'root',
+            'PASSWORD': 'toor',
+            'HOST': 'localhost',
             'PORT': '3306',
         }
     }
@@ -132,6 +133,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
@@ -141,11 +145,22 @@ LOGOUT_REDIRECT_URL = 'home'
 
 # Emails
 if DEBUG:
-    EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
-    EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
+    EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"    
+    EMAIL_HOST = "smtp.gmail.com"
+    EMAIL_HOST_USER = "mexa.industrias@gmail.com"
+    EMAIL_HOST_PASSWORD  = "Mexico2019"
+    EMAIL_PORT = 587
+    EMAIL_USE_TLS = True
+
 else:
     # Aquí hay que configurar un email real para producción
-    pass
+    EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+    EMAIL_HOST = "smtp.gmail.com"
+    EMAIL_HOST_USER = "mexa.industrias@gmail.com"
+    EMAIL_HOST_PASSWORD  = "Mexico2019"
+    EMAIL_PORT = 587
+    EMAIL_USE_TLS = True
+
 
 # Media Files
 MEDIA_URL = '/media/'
