@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-w4)+efbtuc5#qpp-a+9c6^hfv+41ift-@04-c13bo4v6+#zg+r'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['www.mexinc.com.mx']
 
@@ -160,7 +160,7 @@ if DEBUG:
     #EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
     EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"    
     EMAIL_HOST = "smtp.gmail.com"
-    EMAIL_HOST_USER = "conjguerrero@gmail.com"
+    EMAIL_HOST_USER = "mexa.industrias@gmail.com"
     EMAIL_HOST_PASSWORD  = "Mexico2019"
     EMAIL_PORT = 587
     EMAIL_USE_TLS = True
@@ -169,7 +169,7 @@ else:
     # Aquí hay que configurar un email real para producción
     EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
     EMAIL_HOST = "smtp.gmail.com"
-    EMAIL_HOST_USER = "conjguerrero@gmail.com"
+    EMAIL_HOST_USER = "mexa.industrias@gmail.com"
     EMAIL_HOST_PASSWORD  = "Mexico2019"
     EMAIL_PORT = 587
     EMAIL_USE_TLS = True
