@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-w4)+efbtuc5#qpp-a+9c6^hfv+41ift-@04-c13bo4v6+#zg+r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['www.mexinc.com.mx']
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -82,27 +82,27 @@ WSGI_APPLICATION = 'tal.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'eguerrero$mexa',
-            'USER': 'eguerrero',
-            'PASSWORD': 'Ereslomasbonit0',
-            'HOST': 'eguerrero.mysql.pythonanywhere-services.com',
-            'PORT': '3306',
-        }
-    }
-
 #DATABASES = {
 #        'default': {
 #            'ENGINE': 'django.db.backends.mysql',
-#            'NAME': 'mexa',
-#            'USER': 'root',
-#            'PASSWORD': 'toor',
-#            'HOST': 'localhost',
+#            'NAME': 'eguerrero$mexa',
+#            'USER': 'eguerrero',
+#            'PASSWORD': 'Ereslomasbonit0',
+#            'HOST': 'eguerrero.mysql.pythonanywhere-services.com',
 #            'PORT': '3306',
 #        }
 #    }
+
+DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'mexa',
+            'USER': 'root',
+            'PASSWORD': 'toor',
+            'HOST': 'localhost',
+            'PORT': '3306',
+        }
+    }
 
 
 # Password validation
