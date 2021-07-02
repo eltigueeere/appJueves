@@ -31,5 +31,6 @@ urlpatterns = [
     # Paths de profiles
     path('profiles/', include(profiles_patterns)),
     path('correoos/', include('correoos.urls')),
+    path('redsocial/', include('rsocial.urls')),
 
 ]

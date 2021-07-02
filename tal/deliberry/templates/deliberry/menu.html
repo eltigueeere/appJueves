@@ -10,7 +10,7 @@
                 alt="Card image cap">
             <div class="card-body">
                 <h5>Alitas estilo CDMX.</h5>
-                <p class="card-text">Pollo frio.</p>
+                <p class="card-text">Pollo frito.</p>
             </div>
             <div class="card-body">
                 <h6>Ingredientes extras.</h6>
@@ -23,7 +23,34 @@
                 <form>
                     <div class="form-group">
                         <input type="hidden" value="Alitas estilo CDMX" name="orden1" id="">
-                        <textarea id="extra1" name="extra1" cols="23" rows="10"></textarea>
+                        <textarea id="extra1" name="extra1" cols="23" rows="10" placeholder="SELECCIONA ARRIBA LOS INGREDIENTES EXTRA"></textarea>
+                        <input type="submit" class="btn btn-primary btn-block" value="Ordenar">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="col-md-4">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/NCI_Visuals_Food_Hamburger.jpg/245px-NCI_Visuals_Food_Hamburger.jpg"
+                alt="Card image cap">
+            <div class="card-body">
+                <h5>Hamburger estilo CDMX.</h5>
+                <p class="card-text">Doble carne pan.</p>
+            </div>
+            <div class="card-body">
+                <h6>Ingredientes extras.</h6>
+                <button type="button" onclick="orden5()" value="Cebolla" id="cebolla" class="btn btn-info">Cebolla</button> 
+                <button type="button" onclick="orden6()" value="Aderezo ranch" id="aderesoR" class="btn btn-success">Aderezo ranch</button>
+                <button type="button" onclick="orden7()" value="Cebolla Extra" id="cebollaExtra" class="btn btn-danger">Cebolla Extra</button> 
+                <button type="button" onclick="orden8()" value="Aderezo ranch Extra" id="aderesoRExtra" class="btn btn-warning">Aderezo ranch Extra</button>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="form-group">
+                        <input type="hidden" value="Alitas estilo CDMX" name="orden2" id="">
+                        <textarea id="extra2" name="extra2" cols="23" rows="10" placeholder="SELECCIONA ARRIBA LOS INGREDIENTES EXTRA"></textarea>
                         <input type="submit" class="btn btn-primary btn-block" value="Ordenar">
                     </div>
                 </form>
@@ -37,16 +64,46 @@
 <script type="text/javascript"> 
     function orden1(){
         ingrediente = document.getElementById('cebolla').value
-        ordenFinal(ingrediente)
+        ordenFinal1(ingrediente)
     } 
     function orden2(){
         ingrediente = document.getElementById('aderesoR').value
-        ordenFinal(ingrediente)
+        ordenFinal1(ingrediente)
+    }
+    function orden3(){
+        ingrediente = document.getElementById('cebollaExtra').value
+        ordenFinal1(ingrediente)
+    }
+     
+    function orden4(){
+        ingrediente = document.getElementById('aderesoRExtra').value
+        ordenFinal1(ingrediente)
+    }
+    function ordenFinal1(ingrediente){
+        final = document.getElementById('extra1').value + " " + ingrediente
+        document.getElementById('extra1').innerHTML= final;
     }
 
-    function ordenFinal(ingrediente){
-        pre = document.getElementById('extra1').value + " " + ingrediente
-        document.getElementById('extra1').innerHTML= pre;
+
+    function orden5(){
+        ingrediente = document.getElementById('aderesoRExtra').value
+        ordenFinal2(ingrediente)
+    }
+    function orden6(){
+        ingrediente = document.getElementById('aderesoR').value
+        ordenFinal2(ingrediente)
+    }
+    function orden7(){
+        ingrediente = document.getElementById('cebollaExtra').value
+        ordenFinal2(ingrediente)
+    }
+    function orden8(){
+        ingrediente = document.getElementById('aderesoRExtra').value
+        ordenFinal2(ingrediente)
+    }
+    function ordenFinal2(ingrediente){
+        final = document.getElementById('extra2').value + " " + ingrediente
+        document.getElementById('extra2').innerHTML= final;
     }
 </script>
 {% endblock %}
