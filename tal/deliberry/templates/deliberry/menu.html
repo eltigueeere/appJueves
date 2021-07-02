@@ -2,74 +2,51 @@
 {% load static %}
 {% block title %}Página{% endblock %}
 {% block content %}
-<h3 class="text-center">Ordena por redes sociales</h3>
-    <div class="row">
-        
-        <div class="col-md-4">
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" width="150" height="200"  src="https://easyrecetas.com/wp-content/uploads/2020/05/Receta-de-Hamburguesas-Texanas.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Alitas</h5>
-                    <p class="card-text">Pregunta precios.</p>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Ingrediente extra Nopales</li>
-                    <!--<li class="list-group-item">Dapibus ac facilisis in</li>
-                    <li class="list-group-item">Vestibulum at eros</li>-->
-                </ul>
-                <div class="card-body">
-                    <!--<a href="#" class="card-link">Reservacion</a>-->
-                    <a  href="https://www.facebook.com/hamburguesasdelbarrioo/?ref=page_internal" target="blank" class="card-link">Ordenar</a>
-                </div>
+<h3 class="text-center">Ordena </h3>
+<div class="row">
+    <div class="col-md-4">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="https://eltop.com.mx/wp-content/uploads/2020/05/1200x675-1-scaled.jpg"
+                alt="Card image cap">
+            <div class="card-body">
+                <h5>Alitas estilo CDMX.</h5>
+                <p class="card-text">Pollo frio.</p>
+            </div>
+            <div class="card-body">
+                <h6>Ingredientes extras.</h6>
+                <button type="button" onclick="orden1()" value="Cebolla" id="cebolla" class="btn btn-info">Cebolla</button> 
+                <button type="button" onclick="orden2()" value="Aderezo ranch" id="aderesoR" class="btn btn-success">Aderezo ranch</button>
+                <button type="button" onclick="orden3()" value="Cebolla Extra" id="cebollaExtra" class="btn btn-danger">Cebolla Extra</button> 
+                <button type="button" onclick="orden4()" value="Aderezo ranch Extra" id="aderesoRExtra" class="btn btn-warning">Aderezo ranch Extra</button>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="form-group">
+                        <input type="hidden" value="Alitas estilo CDMX" name="orden1" id="">
+                        <textarea id="extra1" name="extra1" cols="23" rows="10"></textarea>
+                        <input type="submit" class="btn btn-primary btn-block" value="Ordenar">
+                    </div>
+                </form>
             </div>
         </div>
-
-
-        <div class="col-md-4">
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" width="150" height="200"  src="https://eltop.com.mx/wp-content/uploads/2020/05/1200x675-1-scaled.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Hot-Dogs</h5>
-                    <p class="card-text">Pregunta precios..</p>
-                </div>
-                <!--<ul class="list-group list-group-flush">
-                    <li class="list-group-item">Cras justo odio</li>
-                    <li class="list-group-item">Dapibus ac facilisis in</li>
-                    <li class="list-group-item">Vestibulum at eros</li>
-                </ul>-->
-                <div class="card-body">
-                    <!--<a href="#" class="card-link">Reservacion</a>-->
-                    <a  href="https://www.facebook.com/hamburguesasdelbarrioo/?ref=page_internal" target="blank" class="card-link">Ordenar</a>
-                </div>
-            </div>
-        </div>
-
-
-        <!--<div class="col-md-4">
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="https://revistalacampina.mx/wp-content/uploads/2018/10/cafe_querubibes.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Cras justo odio</li>
-                    <li class="list-group-item">Dapibus ac facilisis in</li>
-                    <li class="list-group-item">Vestibulum at eros</li>
-                </ul>
-                <div class="card-body">
-                    <a  href="https://www.facebook.com/hamburguesasdelbarrioo/?ref=page_internal" target="blank" class="card-link">Ordenar</a>
-                </div>
-            </div>
-        </div>-->
-
-        <br><br><br>
-
-        
     </div>
+</div>
+<br><br><br>
 
 
+<script type="text/javascript"> 
+    function orden1(){
+        ingrediente = document.getElementById('cebolla').value
+        ordenFinal(ingrediente)
+    } 
+    function orden2(){
+        ingrediente = document.getElementById('aderesoR').value
+        ordenFinal(ingrediente)
+    }
+
+    function ordenFinal(ingrediente){
+        pre = document.getElementById('extra1').value + " " + ingrediente
+        document.getElementById('extra1').innerHTML= pre;
+    }
+</script>
 {% endblock %}
-
-
