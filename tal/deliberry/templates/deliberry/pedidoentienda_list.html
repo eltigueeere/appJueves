@@ -1,0 +1,36 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Página{% endblock %}
+{% block content %}
+<div class="container">
+    <h3 class="text-center">ORDENES</h3>
+
+
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">USUARIO</th>
+            <th scope="col">ORDEN</th>
+            <th scope="col">FECHA</th>
+          </tr>
+        </thead>
+        <tbody>
+        
+        {% for orden in object_list %}
+          <tr>
+            <th>{{orden.usuario}}</th>
+            <td>{{orden.pedido}}</td>
+            <td>{{orden.fechaDeOrden}}</td>
+          </tr>
+          <tr>
+        {% empty %}
+            <li>No ordens yet.</li>
+        {% endfor %}
+        </tbody>
+      </table>
+
+
+</div>
+
+
+{% endblock %}

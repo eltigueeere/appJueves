@@ -7,6 +7,8 @@ class RecompensaForm(forms.Form):
     nombreEmpresa = forms.CharField(label="Empresa que asigna", required=True)
 
 
+
+
     #class Meta:
     #    model = Recompensa
     #    fields = ['title', 'content', 'order']
