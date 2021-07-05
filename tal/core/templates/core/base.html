@@ -50,7 +50,7 @@
 
             {% if  request.user.groups.all.0.name == "empresa"  %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'CorreosServiciosUpdate' %}">Comunicación</a>
+              <a class="nav-link" href="{% url 'pedidosEnTienda' %}">Pedidos</a>
             </li>
             {% endif %}
             <li class="nav-item">
@@ -100,4 +100,3 @@
     <script src="{% static 'core/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
     <script src="{% static 'core/js/main.js' %}"></script>
   </body>
-  
