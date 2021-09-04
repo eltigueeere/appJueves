@@ -5,7 +5,6 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
 from django.shortcuts import render, redirect
-from django.urls import reverse
 from .forms import RecompensaForm
 from .models import Recompensa
 

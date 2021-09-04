@@ -21,7 +21,7 @@ from django.conf import settings
 
 urlpatterns = [
     path('', include('core.urls')),
-    path('deliberry/', include('deliberry.urls')),
+    #path('deliberry/', include('deliberry.urls')),
     path('qr/', include('qr.urls')),
     path('rewards/', include('rewards.urls')),
     path('admin/', admin.site.urls),
@@ -30,6 +30,6 @@ urlpatterns = [
     path('accounts/', include('registration.urls')),
     # Paths de profiles
     path('profiles/', include(profiles_patterns)),
-    path('redsocial/', include('rsocial.urls')),
+    #path('redsocial/', include('rsocial.urls')),
 
 ]

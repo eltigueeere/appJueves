@@ -74,22 +74,22 @@
     {% if  request.user.is_authenticated %}
         <footer class="container-fluid">
           <div class="row centro">
-            <div class="col-3 ">
+            <div class="col-6 ">
               <a href="{% url 'rewards' %}"  class="btn-social btn-digg"><i
                   class="fa fa-star-o" aria-hidden="true"></i></a> <br> Estrellas
             </div>
-            <div class="col-3">
+            <div class="col-6">
               <a href="{% url 'qr' %}"   class="btn-social btn-digg"><i
                   class="fa fa-credit-card" aria-hidden="true"></i></a> <br> Tarjeta
             </div>
-            <div class="col-3">
-              <a href="{% url 'deliberry' %}"  class="btn-social btn-digg"><i
+            <!-- <div class="col-3">
+              <a href="url 'deliberry'"  class="btn-social btn-digg"><i
                   class="fa fa-shopping-cart" aria-hidden="true"></i></a> <br> Ordena
-            </div>
-            <div class="col-3">
-              <a  href="{% url 'rsocial' %}" class="btn-social btn-facebook"><i
+            </div> -->
+            <!-- <div class="col-3">
+              <a  href="{url 'rsocial'" class="btn-social btn-facebook"><i
                   class="fa fa-facebook"></i></a> <br> Facebook
-            </div>
+            </div> -->
           </div>
         </footer>
       {% endif %}

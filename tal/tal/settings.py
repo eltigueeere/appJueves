@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-w4)+efbtuc5#qpp-a+9c6^hfv+41ift-@04-c13bo4v6+#zg+r'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['www.mexinc.com.mx']
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -39,12 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
-    'deliberry',
+    #'deliberry',
     'qr',
     'rewards',
     'ckeditor',
     'profiles',
-    'rsocial',
+    #'rsocial',
 
 ]
 
@@ -83,15 +83,22 @@ WSGI_APPLICATION = 'tal.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'mexinc$mexinc',
-            'USER': 'mexinc',
-            'PASSWORD': 'Mexico2019',
-            'HOST': 'mexinc.mysql.pythonanywhere-services.com',
-            'PORT': '3306',
-        }
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
+}
+
+# DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.mysql',
+#             'NAME': 'mexinc$mexinc',
+#             'USER': 'mexinc',
+#             'PASSWORD': 'Mexico2019',
+#             'HOST': 'mexinc.mysql.pythonanywhere-services.com',
+#             'PORT': '3306',
+#         }
+#     }
 
 #DATABASES = {
 #        'default': {
