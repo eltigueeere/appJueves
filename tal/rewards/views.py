@@ -17,13 +17,13 @@ class RewardsInicio(TemplateView):
         recompensas_recompensa=0
         recompensas_recompensa_empresa=0
         if (request.user.is_authenticated and (request.user.groups.filter(name='empresa').exists() or request.user.is_staff )):
-            recompensas_recompensa_empresa = Recompensa.objects.values('nombreUsuario').filter(statusRecompensa=1).order_by('nombreUsuario').annotate(total_recompensa=Sum('recompensa'))
+            recompensas_recompensa_empresa = Recompensa.objects.values('nombreUsuario').filter(statusRecompensa=1, nombreEmpresaUsuario = self.request.user).order_by('nombreUsuario').annotate(total_recompensa=Sum('recompensa'))
             return render(request, self.template_name2, {'saludo': 'Hola', 'usuario':self.request.user ,  'recompensas_recompensa_empresa': recompensas_recompensa_empresa,})
         else:
-            recompensaUser = Recompensa.objects.all().filter(nombreUsuario=self.request.user, statusRecompensa=1)
-            for rc in recompensaUser:
-                recompensas_recompensa = recompensas_recompensa + rc.recompensa
-            return render(request, self.template_name, {'saludo': 'Hola', 'usuario':self.request.user ,  'recompensas_recompensa': recompensas_recompensa,})
+            recompensaUser = Recompensa.objects.all().filter(nombreUsuario=self.request.user, statusRecompensa=1).order_by('nombreEmpresaUsuario').annotate(estrellas=Sum('recompensa'))
+            # for rc in recompensaUser:
+            #     recompensas_recompensa = recompensas_recompensa + rc.recompensa
+            return render(request, self.template_name, {'saludo': 'Hola', 'usuario':self.request.user ,  'recompensas_recompensa': recompensaUser,})
 
 
 def compraUsuario(request, userName):

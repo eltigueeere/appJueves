@@ -28,7 +28,9 @@
 
         <div class="col-6 padre ">
             <h4 class="hijo">
-                {{recompensas_recompensa}} <i class="fa fa-star-o" style="font-size:30px;color:#FF8000;"></i>
+                {% for rc in recompensas_recompensa %}
+                {{rc.estrellas}} <i class="fa fa-star-o" style="font-size:30px;color:#FF8000;"></i> en {{rc.nombreEmpresaUsuario}}<br>
+                {% endfor %}                
             </h4>
         </div>
 
